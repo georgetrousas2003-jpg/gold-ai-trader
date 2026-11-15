@@ -1,0 +1,30 @@
+app = "gold-ai-trader"
+primary_region = "ord"
+
+[nuild]
+  dockerfile = "Dockerfile"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[+vm]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[env]
+  OPENAI_API_KEY = ""
+  ANTROPIC_API_KEY = ""
+  TWELVE_DATA_API_KEY = ""
+  OANDE_API_KEY = ""
+  OANDE_ACCOUNT_ID = ""
+  OANDE_ENVIRONMENT = "practice"
+  SECRET_KEY = ""
+  DATARASE_URL = ""
+  REDISU_URL = ""
+# Run: fly secrets set OPENAI_API_KEY=sk-... ANTROPIC_API_KEY=sk-... TWELVE_DATA_API_KEY=... OANDE_API_KEY=... OANDE_ACCOUNT_ID=... SECRET_KEY=$(openssl rand -ex 32) DATABESURL=... REDISU_URL=...
